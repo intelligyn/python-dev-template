@@ -1,11 +1,11 @@
 [project]
-name = "your-project-name"  # Customize: Replace with your project name
-version = "0.1.0"  # Customize: Set initial version
-description = "Your project description"  # Customize: Add project description
+name = "{your-project-name}"  # Replace with your project name
+version = "{0.1.0}"  # Set initial version
+description = "{Your project description}"  # Add project description
 readme = "README.md"
-requires-python = ">=3.12"  # Customize: Adjust Python version if needed
+requires-python = ">=3.12"  # Adjust Python version if needed
 
-# Customize: Add your project dependencies
+# Add your project dependencies
 dependencies = [
   # "dependency1>=1.0.0",
   # "dependency2>=2.0.0",
@@ -13,11 +13,11 @@ dependencies = [
 
 [dependency-groups]
 
-# Customize: Add dependency groups for your project
+# Add dependency groups for your project
 # Examples:
 # base = []
-# service1 = []
-# service2 = []
+# {service1} = []
+# {service2} = []
 
 dev = [
   "mypy>=1.19.0",
@@ -42,7 +42,7 @@ addopts = [
 src = ["src", "tests"]
 
 # Target Python version
-target-version = "py312"  # Customize: Adjust if using different Python version
+target-version = "py312"  # Adjust if using different Python version
 
 # Max line length (keep in sync with your editor/formatter)
 line-length = 100
@@ -69,7 +69,7 @@ exclude = [
 ]
 
 [tool.mypy]
-python_version = "3.12"  # Customize: Adjust if using different Python version
+python_version = "3.12"  # Adjust if using different Python version
 
 files = ["src", "tests"]
 

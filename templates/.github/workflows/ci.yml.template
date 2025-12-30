@@ -21,8 +21,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-          # Customize: Update Python version if needed
+          python-version: "{3.12}"  # Update Python version if needed
 
       - name: Install uv
         run: pip install uv
@@ -64,7 +63,7 @@ jobs:
       - name: pylint
         run: uv run pylint
 
-      # Customize: Add additional CI steps as needed
+      # Add additional CI steps as needed
       # Examples:
       # - Security scanning
       # - Build artifacts
