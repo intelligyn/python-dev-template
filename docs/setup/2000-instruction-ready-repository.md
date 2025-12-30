@@ -16,63 +16,13 @@ Note: This instruction extends [Developer setup](2000-instruction-developer-setu
 ## Setup pre-commit
 
 1. Validate install: `uv run pre-commit --version`
-2. Copy `.pre-commit-config.yaml` from `templates/` directory to project root, or create it with the following content:
-
-   ```yaml
-   repos:
-     - repo: https://github.com/pre-commit/pre-commit-hooks
-       rev: v6.0.0
-       hooks:
-         - id: end-of-file-fixer
-         - id: trailing-whitespace
-
-     - repo: https://github.com/igorshubovych/markdownlint-cli
-       rev: v0.47.0
-       hooks:
-         - id: markdownlint
-           args: [--fix]
-
-     - repo: local
-       hooks:
-         - id: ruff-check
-           name: ruff check
-           entry: uv run ruff check --fix
-           language: system
-           types: [python]
-
-         - id: ruff-format
-           name: ruff format
-           entry: uv run ruff format
-           language: system
-           types: [python]
-
-         - id: mypy
-           name: mypy
-           entry: uv run mypy
-           language: system
-           pass_filenames: false
-
-         - id: pydoclint
-           name: pydoclint
-           entry: uv run pydoclint src tests
-           language: system
-           pass_filenames: false
-
-         - id: pylint
-           name: pylint
-           entry: uv run pylint src tests
-           language: system
-           types: [python]
-           pass_filenames: false
+2. Copy `.pre-commit-config.yaml` from `templates/` directory to project root:
+   ```bash
+   cp templates/.pre-commit-config.yaml .
    ```
-
-3. Copy `.markdownlint.yaml` from `templates/` directory to project root, or create it with:
-
-   ```yaml
-   default: true
-
-   # Disable:
-   MD013: false  # line-length
+3. Copy `.markdownlint.yaml` from `templates/` directory to project root:
+   ```bash
+   cp templates/.markdownlint.yaml .
    ```
 
 4. Run: `uv run pre-commit install`
