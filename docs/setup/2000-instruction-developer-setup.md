@@ -36,7 +36,7 @@ Does not apply to:
 - Docker Desktop (macOS/Windows) or Docker Engine (Linux)
 - uv
 - VS Code (preferred code editor)
-- On windows: [wsl](https://learn.microsoft.com/en-us/windows/wsl/install), [chocolatey](https://chocolatey.org/install)
+- On Windows: [wsl](https://learn.microsoft.com/en-us/windows/wsl/install), [chocolatey](https://chocolatey.org/install)
 - On macOS: [brew](https://brew.sh)
 
 Environment must support:
@@ -92,7 +92,10 @@ Install VS Code
 Install nvm and node
 
 1. Open Terminal
-2. Verify: `node -V`
+2. Run: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
+3. Restart terminal
+4. Run: `nvm install --lts`
+5. Verify: `node -V`
 
 ### 6.2 Linux (Ubuntu / Debian / popOs)
 
