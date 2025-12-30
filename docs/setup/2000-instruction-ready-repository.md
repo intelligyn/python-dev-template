@@ -2,6 +2,14 @@
 
 Note: This instruction extends [Developer setup](2000-instruction-developer-setup.md) and assumes developer setup has been done previously.
 
+## Create project structure
+
+1. Create the source and test directories:
+
+   ```bash
+   mkdir -p src tests
+   ```
+
 ## Install dependencies
 
 All configuration files are already included in the repository. You just need to customize placeholders and install dependencies:
@@ -10,6 +18,8 @@ All configuration files are already included in the repository. You just need to
 2. Run: `uv sync`
 
 This will install all dependencies including dev dependencies (ruff, mypy, pylint, pydoclint, pre-commit, pytest) that are already defined in `pyproject.toml`.
+
+**Note:** `uv init` is not needed since `pyproject.toml` already exists. Running `uv init` would error with: "Project is already initialized (`pyproject.toml` file exists)".
 
 ## Customize configuration files
 
