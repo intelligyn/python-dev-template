@@ -1,0 +1,7 @@
+default: true
+
+# Disable:
+MD013: false  # line-length
+
+# Customize: Add project-specific markdownlint rules as needed
+

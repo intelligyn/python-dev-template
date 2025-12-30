@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          # Customize: Update Python version if needed
+
+      - name: Install uv
+        run: pip install uv
+
+      # Cache uv's download/build cache to speed up installs
+      - name: Cache uv
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+          key: ${{ runner.os }}-uv-${{ hashFiles('uv.lock', 'pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
+
+      - name: Install project (dev)
+        run: uv sync --group dev --frozen
+
+      - name: Ruff (lint)
+        run: uv run ruff check .
+
+      - name: Ruff (format check)
+        run: uv run ruff format --check .
+
+      - name: Mypy
+        run: uv run mypy
+
+      - name: Prepare verification output directory
+        run: mkdir -p verification-history
+
+      - name: Run tests
+        run: uv run pytest
+
+      - name: Markdownlint
+        run: uv run pre-commit run markdownlint -a
+
+      - name: pydoclint
+        run: uv run pydoclint src tests
+
+      - name: pylint
+        run: uv run pylint
+
+      # Customize: Add additional CI steps as needed
+      # Examples:
+      # - Security scanning
+      # - Build artifacts
+      # - Deployment steps
+

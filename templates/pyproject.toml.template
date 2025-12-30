@@ -1,0 +1,105 @@
+[project]
+name = "your-project-name"  # Customize: Replace with your project name
+version = "0.1.0"  # Customize: Set initial version
+description = "Your project description"  # Customize: Add project description
+readme = "README.md"
+requires-python = ">=3.12"  # Customize: Adjust Python version if needed
+
+# Customize: Add your project dependencies
+dependencies = [
+  # "dependency1>=1.0.0",
+  # "dependency2>=2.0.0",
+]
+
+[dependency-groups]
+
+# Customize: Add dependency groups for your project
+# Examples:
+# base = []
+# service1 = []
+# service2 = []
+
+dev = [
+  "mypy>=1.19.0",
+  "pre-commit>=4.5.0",
+  "pydoclint>=0.8.3",
+  "pylint>=4.0.4",
+  "pytest",
+  "pytest-html>=4.1.1",
+  "ruff>=0.14.8",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+  "--html=verification-history/report.html",
+  "--self-contained-html",
+]
+
+[tool.ruff]
+# Directories containing your source code
+src = ["src", "tests"]
+
+# Target Python version
+target-version = "py312"  # Customize: Adjust if using different Python version
+
+# Max line length (keep in sync with your editor/formatter)
+line-length = 100
+
+# Enable Ruff's default linting rules (or customize)
+lint.select = [
+  "E",  # pycodestyle errors
+  "F",  # pyflakes
+  "I",  # isort
+  "B",  # flake8-bugbear
+  "UP", # pyupgrade
+]
+
+# Optional: paths to exclude
+exclude = [
+  ".git",
+  ".venv",
+  "build",
+  "dist",
+  "docs",
+  ".github",
+  "__pycache__",
+  ".pytest_cache",
+]
+
+[tool.mypy]
+python_version = "3.12"  # Customize: Adjust if using different Python version
+
+files = ["src", "tests"]
+
+check_untyped_defs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_unreachable = true
+strict_equality = true
+
+ignore_missing_imports = true
+show_error_codes = true
+
+# Linting configuration
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = [
+  "missing-function-docstring", # TODO: Add docstrings to all functions
+  "missing-module-docstring",   # TODO: Add docstrings to all modules
+  "too-few-public-methods",
+]
+
+[tool.pydoclint]
+style = "numpy"
+files = ["src", "tests"]
+
