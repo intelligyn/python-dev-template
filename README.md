@@ -40,26 +40,24 @@ git commit -m "Initial commit from template"
 
 After creating your repository from this template:
 
-1. **Copy template files to project root:**
-   ```bash
-   cp templates/.pre-commit-config.yaml .
-   cp templates/.markdownlint.yaml .
-   cp templates/Makefile.template Makefile
-   cp templates/pyproject.toml.template pyproject.toml
-   cp templates/.github/workflows/ci.yml.template .github/workflows/ci.yml
+1. **Customize placeholders** in the following files (replace `**{placeholder}**` with your values):
+   - `pyproject.toml`: Replace `{your-project-name}`, `{Your project description}`, etc.
+   - `Makefile`: Replace `{service1}`, `{service2}`, etc. with your service names
+   - `.github/workflows/ci.yml`: Update Python version if needed (`{3.12}`)
+   - Documentation files: Replace project-specific placeholders
+
+2. **Add your project dependencies** to `pyproject.toml`:
+   ```toml
+   dependencies = [
+     "your-dependency>=1.0.0",
+   ]
    ```
 
-2. **Customize `pyproject.toml`:**
-   - Replace `{your-project-name}` with your project name
-   - Update `{Your project description}` with your description
-   - Add your project dependencies
-
-3. **Initialize the project:**
+3. **Install dependencies:**
    ```bash
-   uv init
-   uv add --dev ruff mypy pylint pydoclint pre-commit pytest pytest-html
    uv sync
    ```
+   This will install all dependencies including dev dependencies already defined in `pyproject.toml`.
 
 4. **Set up pre-commit hooks:**
    ```bash
@@ -79,13 +77,17 @@ After creating your repository from this template:
 - `docs/setup/2000-instruction-developer-setup.md` - Developer environment setup instructions
 - `docs/setup/2000-instruction-ready-repository.md` - Repository initialization guide
 
-### Template Files
+### Configuration Files (Ready to Use)
 
-- `templates/.pre-commit-config.yaml` - Pre-commit hooks configuration
-- `templates/.markdownlint.yaml` - Markdown linting configuration
-- `templates/Makefile.template` - Common Makefile targets
-- `templates/pyproject.toml.template` - Python project configuration
-- `templates/.github/workflows/ci.yml.template` - CI workflow template
+All configuration files are included in the repository root with placeholders for customization:
+
+- `.pre-commit-config.yaml` - Pre-commit hooks configuration
+- `.markdownlint.yaml` - Markdown linting configuration
+- `Makefile` - Common Makefile targets
+- `pyproject.toml` - Python project configuration (with placeholders)
+- `.github/workflows/ci.yml` - CI workflow template
+
+Simply replace placeholders marked with `{placeholder}` or `**{placeholder}**` with your project-specific values.
 
 ## Customization Guide
 

@@ -42,34 +42,26 @@ git push -u origin main
 
 ## Initial Setup
 
-### Step 1: Copy Template Files
+### Step 1: Customize Placeholders
 
-Copy all template files to your project root:
+All configuration files are already included in the repository root. Simply replace placeholders:
 
-```bash
-# Copy configuration files
-cp templates/.pre-commit-config.yaml .
-cp templates/.markdownlint.yaml .
+**In `pyproject.toml`:**
+- Replace `{your-project-name}` with your project name
+- Replace `{Your project description}` with your description
+- Replace `{0.1.0}` with your initial version
+- Add your project dependencies
 
-# Copy project configuration
-cp templates/pyproject.toml.template pyproject.toml
-cp templates/Makefile.template Makefile
+**In `Makefile` (if using Docker Compose):**
+- Replace `{service1}`, `{service2}`, etc. with your service names
 
-# Copy CI workflow (create directory first)
-mkdir -p .github/workflows
-cp templates/.github/workflows/ci.yml.template .github/workflows/ci.yml
-```
+**In `.github/workflows/ci.yml` (optional):**
+- Replace `{3.12}` with your Python version if different
 
-### Step 2: Initialize Python Project
+### Step 2: Install Dependencies
 
 ```bash
-# Initialize uv project (if not already done)
-uv init
-
-# Install development dependencies
-uv add --dev ruff mypy pylint pydoclint pre-commit pytest pytest-html
-
-# Sync dependencies
+# Install all dependencies (dev dependencies are already defined in pyproject.toml)
 uv sync
 ```
 

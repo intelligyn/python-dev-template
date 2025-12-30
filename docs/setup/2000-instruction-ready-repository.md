@@ -7,52 +7,36 @@ Note: This instruction extends [Developer setup](2000-instruction-developer-setu
 1. Open terminal
 2. Run `uv init`
 
-## Add linting and type checking tools
+## Install dependencies
+
+All configuration files are already included in the repository. You just need to customize placeholders and install dependencies:
 
 1. Open terminal
-2. Run: `uv add --dev ruff mypy pylint pydoclint pre-commit`
-3. Run: `uv sync`
+2. Run: `uv sync`
+
+This will install all dependencies including dev dependencies (ruff, mypy, pylint, pydoclint, pre-commit, pytest) that are already defined in `pyproject.toml`.
+
+## Customize configuration files
+
+Replace placeholders in the following files:
+
+1. **`pyproject.toml`**:
+   - Replace `{your-project-name}` with your project name
+   - Replace `{Your project description}` with your description
+   - Replace `{0.1.0}` with your initial version
+   - Add your project dependencies
+
+2. **`Makefile`** (if using Docker Compose):
+   - Replace `{service1}`, `{service2}`, etc. with your service names
+
+3. **`.github/workflows/ci.yml`** (optional):
+   - Replace `{3.12}` with your Python version if different
 
 ## Setup pre-commit
 
 1. Validate install: `uv run pre-commit --version`
-2. Copy `.pre-commit-config.yaml` from `templates/` directory to project root:
-   ```bash
-   cp templates/.pre-commit-config.yaml .
-   ```
-3. Copy `.markdownlint.yaml` from `templates/` directory to project root:
-   ```bash
-   cp templates/.markdownlint.yaml .
-   ```
-
-4. Run: `uv run pre-commit install`
-
-5. Verify: `uv run pre-commit run --all-files`
-
-## Setup project configuration
-
-1. Copy `pyproject.toml.template` from `templates/` directory to `pyproject.toml` in project root
-2. Customize `pyproject.toml`:
-   - Update project name and description
-   - Add your project dependencies
-   - Adjust Python version if needed
-   - Customize tool configurations as needed
-
-## Setup Makefile (optional)
-
-1. Copy `Makefile.template` from `templates/` directory to `Makefile` in project root
-2. Customize `Makefile`:
-   - Add your service names
-   - Add project-specific targets
-   - Configure Docker compose files if used
-
-## Setup CI workflow (optional)
-
-1. Copy `ci.yml.template` from `templates/.github/workflows/` to `.github/workflows/ci.yml` in your repository
-2. Customize the workflow:
-   - Adjust Python version if needed
-   - Add project-specific CI steps
-   - Configure branch names
+2. Run: `uv run pre-commit install`
+3. Verify: `uv run pre-commit run --all-files`
 
 ## Local CI checks
 
