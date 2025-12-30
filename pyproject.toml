@@ -1,7 +1,7 @@
 [project]
-name = "{your-project-name}"  # Replace with your project name
-version = "{0.1.0}"  # Set initial version
-description = "{Your project description}"  # Add project description
+name = "python-dev-template"  # Replace with your project name
+version = "0.1.0"  # Set initial version
+description = "Add your description here"  # Add project description
 readme = "README.md"
 requires-python = ">=3.12"  # Adjust Python version if needed
 
@@ -102,4 +102,3 @@ disable = [
 [tool.pydoclint]
 style = "numpy"
 files = ["src", "tests"]
-

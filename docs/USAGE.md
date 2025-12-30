@@ -22,6 +22,7 @@ This guide provides detailed instructions for using the Python Development Templ
    - Visibility (Public/Private)
 4. Click **"Create repository from template"**
 5. Clone your new repository:
+
    ```bash
    git clone https://github.com/your-org/your-project-name.git
    cd your-project-name
@@ -47,15 +48,18 @@ git push -u origin main
 All configuration files are already included in the repository root. Simply replace placeholders:
 
 **In `pyproject.toml`:**
+
 - Replace `{your-project-name}` with your project name
 - Replace `{Your project description}` with your description
 - Replace `{0.1.0}` with your initial version
 - Add your project dependencies
 
 **In `Makefile` (if using Docker Compose):**
+
 - Replace `{service1}`, `{service2}`, etc. with your service names
 
 **In `.github/workflows/ci.yml` (optional):**
+
 - Replace `{3.12}` with your Python version if different
 
 ### Step 2: Install Dependencies
@@ -124,6 +128,7 @@ dependencies = [
 ```
 
 Then run:
+
 ```bash
 uv sync
 ```
@@ -149,11 +154,11 @@ worker = [
 .PHONY: deploy test-integration
 
 deploy:
-	@echo "Deploying to production..."
-	# Add your deployment commands
+ @echo "Deploying to production..."
+ # Add your deployment commands
 
 test-integration:
-	uv run pytest tests/integration/
+ uv run pytest tests/integration/
 ```
 
 ### Customizing Ruff Rules
@@ -176,6 +181,7 @@ lint.select = [
 1. Go to repository Settings → Secrets and variables → Actions
 2. Add required secrets (e.g., `PYPI_API_TOKEN`, `DOCKER_HUB_TOKEN`)
 3. Reference in workflow:
+
    ```yaml
    - name: Publish
      env:
@@ -198,6 +204,7 @@ uv run pre-commit run --all-files
 ### uv Command Not Found
 
 Install uv:
+
 ```bash
 # macOS/Linux
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -209,6 +216,7 @@ powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | ie
 ### Makefile Targets Not Working
 
 Ensure you're using the correct Makefile:
+
 ```bash
 # Check if Makefile exists
 ls -la Makefile
@@ -246,4 +254,3 @@ After completing setup:
 5. Add project-specific tests
 
 For more information, see the [main README](../README.md).
-
