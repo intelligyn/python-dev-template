@@ -2,11 +2,6 @@
 
 Note: This instruction extends [Developer setup](2000-instruction-developer-setup.md) and assumes developer setup has been done previously.
 
-## Initialize uv
-
-1. Open terminal
-2. Run `uv init`
-
 ## Install dependencies
 
 All configuration files are already included in the repository. You just need to customize placeholders and install dependencies:
