@@ -14,207 +14,35 @@ This template provides:
 
 Use this template to quickly bootstrap new Python projects with best practices and consistent tooling across your organization.
 
-## Usage
-
-### Option 1: Use as GitHub Template (Recommended)
-
-1. Click **"Use this template"** button on GitHub
-2. Create your new repository from this template
-3. Clone your new repository locally
-4. Follow the customization steps below
-
-### Option 2: Clone and Customize
-
-```bash
-git clone https://github.com/intelligyn/python-dev-template.git your-project-name
-cd your-project-name
-# Remove .git and initialize new repository
-rm -rf .git
-git init
-git add .
-git commit -m "Initial commit from template"
-# Customize files as needed
-```
-
 ## Quick Start
 
-After creating your repository from this template:
+1. Click **"Use this template"** button on GitHub to create your repository
+2. Clone your new repository locally
+3. Customize placeholders in `pyproject.toml`, `Makefile`, and documentation files
+4. Run `uv sync` to install dependencies
+5. Run `uv run pre-commit install` to set up hooks
+6. Run `make check` to verify everything works
 
-1. **Customize placeholders** in the following files (replace `**{placeholder}**` with your values):
-   - `pyproject.toml`: Replace `{your-project-name}`, `{Your project description}`, etc.
-   - `Makefile`: Replace `{service1}`, `{service2}`, etc. with your service names
-   - `.github/workflows/ci.yml`: Update Python version if needed (`{3.12}`)
-   - Documentation files: Replace project-specific placeholders
-
-2. **Add your project dependencies** to `pyproject.toml`:
-   ```toml
-   dependencies = [
-     "your-dependency>=1.0.0",
-   ]
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   uv sync
-   ```
-   This will install all dependencies including dev dependencies already defined in `pyproject.toml`.
-
-4. **Set up pre-commit hooks:**
-   ```bash
-   uv run pre-commit install
-   uv run pre-commit run --all-files
-   ```
-
-5. **Verify everything works:**
-   ```bash
-   make check
-   ```
+For detailed instructions, see [Usage Guide](docs/USAGE.md).
 
 ## What's Included
 
+### Configuration Files
+
+All configuration files are included in the repository root with placeholders:
+
+- `pyproject.toml` - Python project configuration
+- `Makefile` - Common Makefile targets
+- `.pre-commit-config.yaml` - Pre-commit hooks
+- `.markdownlint.yaml` - Markdown linting
+- `.github/workflows/ci.yml` - CI workflow
+
 ### Documentation
 
-- `docs/setup/2000-instruction-developer-setup.md` - Developer environment setup instructions
+- `docs/setup/2000-instruction-developer-setup.md` - Developer environment setup
 - `docs/setup/2000-instruction-ready-repository.md` - Repository initialization guide
-
-### Configuration Files (Ready to Use)
-
-All configuration files are included in the repository root with placeholders for customization:
-
-- `.pre-commit-config.yaml` - Pre-commit hooks configuration
-- `.markdownlint.yaml` - Markdown linting configuration
-- `Makefile` - Common Makefile targets
-- `pyproject.toml` - Python project configuration (with placeholders)
-- `.github/workflows/ci.yml` - CI workflow template
-
-Simply replace placeholders marked with `{placeholder}` or `**{placeholder}**` with your project-specific values.
-
-## Customization Guide
-
-### 1. Project Identity
-
-Replace placeholders marked with `**{placeholder}**` throughout the template:
-
-**In `pyproject.toml`:**
-```toml
-name = "{your-project-name}"  # Replace with actual project name
-description = "{Your project description}"  # Replace with description
-```
-
-**In documentation files:**
-- `docs/setup/2000-instruction-developer-setup.md`: Replace `**{Project name}**`, `**{Your system/project name}**`
-- Update regulatory context if applicable: `**{Add your regulatory context if applicable, e.g., EU MDR / IEC 62304}**`
-
-### 2. Dependencies
-
-**Add runtime dependencies:**
-```toml
-dependencies = [
-  "dependency1>=1.0.0",
-  "dependency2>=2.0.0",
-]
-```
-
-**Add dependency groups** (if using multiple services/components):
-```toml
-[dependency-groups]
-service1 = [
-  "service1-dependency>=1.0.0",
-]
-service2 = [
-  "service2-dependency>=2.0.0",
-]
-```
-
-### 3. Makefile Customization
-
-**Update service names:**
-```makefile
-SERVICES := {service1} {service2} test
-```
-
-**Add project-specific targets:**
-```makefile
-# Your custom targets
-deploy:
-	@echo "Deploying..."
-
-test-integration:
-	uv run pytest tests/integration/
-```
-
-### 4. CI/CD Workflow
-
-**Update Python version** (if different from 3.12):
-```yaml
-python-version: "{3.12}"  # Update if needed
-```
-
-**Add project-specific CI steps:**
-```yaml
-- name: Custom step
-  run: your-command-here
-```
-
-### 5. Documentation Customization
-
-**Update developer setup instructions:**
-- Replace `**{Project name}**` with your project name
-- Update `**{Add project-specific constraints}**` with your constraints
-- Customize `**{your change control process}**` with your process
-
-**Example customization:**
-```markdown
-**Regulatory Context:** EU MDR / IEC 62304
-**Applicable System:** My Medical Device Software
-
-## 2. Scope
-
-Applies to:
-- All My Medical Device Software developers
-```
-
-## Examples
-
-### Example 1: Simple Python Library
-
-```toml
-[project]
-name = "my-python-lib"
-description = "A simple Python library"
-dependencies = [
-  "requests>=2.31.0",
-]
-```
-
-### Example 2: Multi-Service Application
-
-```toml
-[project]
-name = "my-microservices-app"
-dependencies = []
-
-[dependency-groups]
-api = [
-  "fastapi>=0.104.0",
-  "uvicorn>=0.24.0",
-]
-worker = [
-  "celery>=5.3.0",
-]
-```
-
-### Example 3: Medical Device Software
-
-```markdown
-**Regulatory Context:** EU MDR / IEC 62304
-**Applicable System:** Medical Device Software v1.0
-
-## 10. Constraints
-- No PHI stored or processed locally
-- Device must remain security compliant
-- Only approved versions allowed
-```
+- `docs/USAGE.md` - Detailed usage instructions
+- `docs/CUSTOMIZATION_EXAMPLES.md` - Customization examples
 
 ## Tools Included
 
@@ -234,41 +62,22 @@ worker = [
 
 ## Contributing
 
-We welcome contributions to improve this template! To propose changes:
+We welcome contributions! To propose changes:
 
-1. **Create an issue** describing the change or improvement
-2. **Fork the repository** and create a feature branch
-3. **Make your changes** and test them
-4. **Submit a pull request** with:
-   - Clear description of changes
-   - Rationale for the change
-   - Examples if adding new features
+1. Create an [issue](https://github.com/intelligyn/python-dev-template/issues) describing the change
+2. Fork the repository and create a feature branch
+3. Make your changes and test them
+4. Submit a pull request
 
 ### Contribution Guidelines
 
 - Keep changes generic and reusable across projects
 - Update documentation when adding new features
 - Test changes by creating a test repository from your fork
-- Follow the existing code style and structure
 
 ## Versioning
 
 This template uses semantic versioning. Check [releases](https://github.com/intelligyn/python-dev-template/releases) for version history.
-
-**Version format:** `v1.0.0` (Major.Minor.Patch)
-
-- **Major**: Breaking changes that require manual updates
-- **Minor**: New features or improvements (backward compatible)
-- **Patch**: Bug fixes and minor updates
-
-### Updating from Template
-
-When a new version is released:
-
-1. Review the [changelog](https://github.com/intelligyn/python-dev-template/releases)
-2. Compare your customized files with the new template version
-3. Manually merge changes into your project
-4. Test thoroughly before committing
 
 ## Support
 
